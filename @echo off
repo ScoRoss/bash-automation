@@ -1,0 +1,20 @@
+@echo off
+:: Quick Disk Cleanup - Minimal Version
+:: Run as Administrator
+
+echo Cleaning temp files...
+del /q /f /s %temp%\*.* >nul 2>&1
+rd /s /q %temp% >nul 2>&1
+md %temp% >nul 2>&1
+
+echo Cleaning system temp files...
+del /q /f /s C:\Windows\Temp\*.* >nul 2>&1
+
+echo Emptying Recycle Bin...
+rd /s /q C:\$Recycle.Bin >nul 2>&1
+
+echo Running Disk Cleanup...
+cleanmgr /sagerun:1 >nul 2>&1
+
+echo Done! Check disk space in File Explorer.
+pause
